@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('/static/fonts/IRANSansWeb.woff') format('woff2'),
+         url('/static/fonts/IRANSansWeb.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* حالا می‌توانید از این فونت در هر جای CSS خود استفاده کنید */
+body {
+    font-family: 'MyCustomFont';
+}

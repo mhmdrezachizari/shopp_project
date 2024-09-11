@@ -1,0 +1,42 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+	  <div class="container mt-5">
+        <h1 class="mb-4">سبد خرید</h1>
+        {% if items %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>محصولات</th>
+                    <th>تعداد</th>
+                    <th>قیمت</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>${{ item.product.price }}</td>
+                    <td>
+                        <a href="{% url 'product:remove_from_cart' item.id %}" class="btn btn-danger">حذف</a>
+                    </td>
+                </tr>
+                {% endfor %}
+               <tr>
+              <td>      {% if total_amount %}
+
+ <h2>          قیمت نهایی: {{ total_amount }}</h2>
+
+      {% endif %} </td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="{% url 'product:list' %}" class="btn btn-secondary">برگشت به محصولات</a>
+        {% else %}
+        <p class="text-danger display-4">سبد خرید خالی هست :)</p>
+        {% endif %}
+
+    </div>
+{% endblock %}

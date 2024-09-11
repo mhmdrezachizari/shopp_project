@@ -1,0 +1,40 @@
+<!-- templates/product_list.html -->
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>محصولات من </h2>
+    <a href="{% url 'customAdmin:product_create' %}" class="btn btn-success mb-3">اضافه کردن محصول</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>اسم</th>
+                <th>قیمت</th>
+                <th>تعداد</th>
+                <th>دسته بندی</th>
+                <th>وضعیت</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.get_category }}</td>
+                <td>{% if product.is_active %}
+                	انتشار
+                    {% else %}
+                    منتشر نشده
+                {% endif %} </td>
+                <td>
+                    <a href="{% url 'customAdmin:product_update' product.pk %}" class="btn btn-primary">ویرایش</a>
+                    <a href="{% url 'customAdmin:product_delete' product.pk %}" class="btn btn-danger">حذف</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

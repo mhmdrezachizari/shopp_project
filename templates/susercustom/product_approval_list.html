@@ -1,0 +1,32 @@
+<!-- templates/customAdmin/product_approval_list.html -->
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class=" my-5 mx-4">
+    <h2>محصولات در انتظار تایید</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>نام</th>
+                <th>قیمت</th>
+                <th>کاربر</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.user.username }}</td>
+                <td>
+                    <a href="{% url 'susercustom:approve_product' product.pk %}" class="btn btn-success">معتبر</a>
+                    <a href="{% url 'susercustom:delete_product' product.pk %}" class="btn btn-danger">حذف</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

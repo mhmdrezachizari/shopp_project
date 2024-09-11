@@ -1,0 +1,18 @@
+{% extends 'product/base.html' %}
+{% block content %}
+<body>
+    <div class="container d-flex mt-5">
+    {% for product in products %}
+    	 <div class="card m-5" style="width: 18rem;">
+               <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="card-body">
+            <h5 class="card-title">{{ product.name|truncatechars:20 }}</h5>
+                <p class="card-text">{{ product.description | truncatechars:50 }}</p>
+                <a href="{% url 'product:product_detail' product.id %}" class="btn btn-primary">جزییات</a>
+            </div>
+        </div>
+    {% endfor %}
+     
+       
+    </div>
+{% endblock %}

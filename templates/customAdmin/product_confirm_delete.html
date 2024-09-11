@@ -1,0 +1,13 @@
+<!-- templates/product_confirm_delete.html -->
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class="container my-5">
+    <h2>ایا مایلی حذف شود؟</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">بلی</button>
+        <a href="{% url 'customAdmin:product_list' %}" class="btn btn-secondary">خیر</a>
+    </form>
+</div>
+{% endblock %}

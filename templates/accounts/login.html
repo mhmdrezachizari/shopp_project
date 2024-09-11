@@ -1,0 +1,26 @@
+{% extends 'product/base.html' %}
+{% block content %}
+		 <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="col-lg-6 my-5">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="text-center text mb-4">ورود</h2>
+            <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label  class="form-label">شماره تلفن</label>
+                <input type="text" name="phone_number" class="form-control">
+              </div>
+                <div class="mb-3">
+                <label  class="form-label">رمز</label>
+                <input type="password" name="password" class="form-control">
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">ورود</button>
+                <a style="font-size: 18px" class="my-3 d-block" href="{% url 'accounts:register' %}">اگر ثبت نام نکرده اید </a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

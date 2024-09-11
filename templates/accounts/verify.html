@@ -1,0 +1,22 @@
+{% extends 'product/base.html' %}
+{% block content %}
+	 <div class="container d-flex justify-content-center align-items-center vh-100">
+      <div class="col-lg-6 my-5">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h2 class="text-center text mb-4">کد تایید</h2>
+            <form method="post">
+              {% csrf_token %}
+              <div class="mb-3">
+                <label  class="form-label">ایمیل</label>
+                <input type="text" name="code" class="form-control">
+              </div>
+
+              <button type="submit" class="btn btn-primary w-100">ارسال</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

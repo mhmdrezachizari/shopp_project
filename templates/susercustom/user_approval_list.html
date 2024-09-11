@@ -1,0 +1,30 @@
+<!-- templates/customAdmin/user_approval_list.html -->
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class="container my-5 mx-4">
+    <h2>Unapproved Users</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>نام</th>
+                <th>ایمیل</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a href="{% url 'susercustom:approve_user' user.pk %}" class="btn btn-success">معتبر</a>
+                    <a href="{% url 'susercustom:delete_product' user.pk %}" class="btn btn-success">حذف</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
