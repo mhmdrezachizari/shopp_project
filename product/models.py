@@ -1,3 +1,5 @@
+from datetime import timezone
+
 from django.db import models
 from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
@@ -66,3 +68,12 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.quantity} of {self.product.name}"
+class Discount(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    # expires_at = models.DateTimeField()
+    discountCode = models.CharField(max_length=10,unique=True)
+    valueDecimal = models.IntegerField(default=10)
+    used = models.BooleanField(default=False)
+    def __str__(self):
+        return f"{self.discountCode}"

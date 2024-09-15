@@ -1,0 +1,35 @@
+{% extends 'product/base.html' %}
+{% block content %}
+<div class="container my-5 mx-4">
+    <h2>Unapproved Users</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>نام</th>
+                <th>ایمیل</th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.first_name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.date_joined }}</td>
+            <td>                    <a href="{% url 'susercustom:delete_user' user.pk %}" class="btn btn-danger">حذف</a>
+</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+<div>
+    <h3>کد تخفیف</h3>
+     <form class="d-flex flex-column gap-5 form-control" method="post">
+                      {% csrf_token %}
+     {{ form }}
+                    <button class="btn btn-primary mx-2" type="submit">اضافه</button>
+     <form/>
+</div>
+
+</div>
+{% endblock %}

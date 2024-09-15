@@ -23,10 +23,10 @@ def product_create(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save(commit=False)
-            product.user = request.user  # محصول به کاربر جاری تعلق دارد
+            product.user = request.user
             product.is_active = False
             product.save()
-            form.save_m2m()  # ذخیره دسته‌بندی‌های محصول
+            form.save_m2m()
             return redirect('/admin/products/')
     else:
         form = ProductForm()

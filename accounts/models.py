@@ -67,6 +67,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         """Send an email to this user."""
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name} {self.phone_number} {self.email}"
+
 
 class OtpCode(models.Model):
     phone_number = models.CharField(max_length=11)
